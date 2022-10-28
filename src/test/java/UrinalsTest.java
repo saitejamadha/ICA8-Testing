@@ -108,4 +108,11 @@ public class UrinalsTest {
         });
     }
 
+    @Test
+    void writeToFileOne() throws IOException {
+        System.out.println(" ==== TEST 1 EXECUTED - Valid ==== ");
+        // does not throw any error
+        urinals.writeToFile(new String[]{"1", "2", "3"});
+    }
+
 }
