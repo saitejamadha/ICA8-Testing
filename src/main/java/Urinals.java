@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,7 +39,35 @@ public class Urinals {
         return listOfStrings.toArray(new String[0]);
     }
 
-    void writeToFile(String content) {}
+    String writeToFile(String[] lines) throws IOException {
+        String outFileName = getOutPutFile();
+        File outputFile = new File("./" + outFileName);
+        StringBuilder output = new StringBuilder();
+        for (String line : lines) {
+            output.append(this.countUrinals(line)).append("\n");
+        }
+        Files.write(outputFile.toPath(), output.toString().getBytes());
+        return outFileName;
+    }
+
+    String getOutPutFile() {
+        File file = new File("./rule.txt");
+        if (!file.exists()) return "rule.txt";
+
+        File folder = new File("./");
+        File[] listOfFiles = folder.listFiles();
+
+        int count = 0;
+        assert listOfFiles != null;
+        for (File f : listOfFiles) {
+            if (f.isFile()) {
+                String fileName = f.getName();
+                if (fileName.contains("rule")) count ++;
+            }
+        }
+
+        return "rule" + count + ".txt";
+    }
 
     int countUrinals(String urinals) {
         Pattern pattern = Pattern.compile("11");
