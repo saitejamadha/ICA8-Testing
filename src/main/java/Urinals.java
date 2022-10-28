@@ -7,9 +7,13 @@ import java.util.regex.Pattern;
  */
 public class Urinals {
 
-    void getString() {}
+    boolean isValidString(String input) {
+        return true;
+    }
 
-    void openFile() {}
+    void readFromFile(String filePath) {}
+
+    void writeToFile(String content) {}
 
     int countUrinals(String urinals) {
         Pattern pattern = Pattern.compile("11");

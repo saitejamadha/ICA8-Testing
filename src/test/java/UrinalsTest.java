@@ -52,4 +52,14 @@ public class UrinalsTest {
         Assertions.assertEquals(1, urinals.countUrinals("01000"));
     }
 
+    @Test
+    void testIsValidString1(){
+        Assertions.assertEquals(true, urinals.isValidString("1000101"));
+    }
+
+    @Test
+    void testIsValidString2() {
+        Assertions.assertEquals(false, urinals.isValidString("ABC"));
+    }
+
 }
