@@ -1,4 +1,10 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,8 +22,20 @@ public class Urinals {
         return pattern.matcher(input).find();
     }
 
-    String[] readFromFile(String filePath) {
-        return null;
+    String[] readFromFile(String filePath) throws IOException {
+        File file = new File("./src/main/resources/" + filePath);
+
+        List<String> listOfStrings = new ArrayList<>();
+        BufferedReader bf = new BufferedReader(new FileReader(file));
+        String line = bf.readLine();
+
+        while (line != null) {
+            listOfStrings.add(line);
+            line = bf.readLine();
+        }
+        bf.close();
+
+        return listOfStrings.toArray(new String[0]);
     }
 
     void writeToFile(String content) {}
@@ -58,6 +76,7 @@ public class Urinals {
     }
 
     public static void main(String[] args) {
+
     }
 
 }
