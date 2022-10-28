@@ -7,13 +7,16 @@ import java.util.regex.Pattern;
  */
 public class Urinals {
 
-    boolean isValidString(String input) {
+    boolean goodString(String input) {
+        if (input.trim().length() == 0) return false;
         Pattern pattern = Pattern.compile("^[0-1]*$");
-        Matcher matcher = pattern.matcher(input);
-        return matcher.find();
+        if (!pattern.matcher(input).matches()) {
+            throw new NumberFormatException("Invalid input string");
+        }
+        return pattern.matcher(input).find();
     }
 
-    String readFromFile(String filePath) {
+    String[] readFromFile(String filePath) {
         return null;
     }
 
@@ -52,11 +55,6 @@ public class Urinals {
 
         return (int) Arrays.stream(urinalsArray).filter(x -> x == 1).count() - prevCounts;
 
-    }
-
-    boolean goodString(String str) {
-        System.out.println("Not yet implemented");
-        return true;
     }
 
     public static void main(String[] args) {

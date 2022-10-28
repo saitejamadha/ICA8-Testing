@@ -17,6 +17,26 @@ public class UrinalsTest {
     }
 
     @Test
+    void goodStringOne(){
+        System.out.println(" ==== TEST 1 EXECUTED - Valid String ==== ");
+        Assertions.assertTrue(urinals.goodString("1000101"));
+    }
+
+    @Test
+    void goodStringTwo() {
+        System.out.println(" ==== TEST 2 EXECUTED - Invalid String ==== ");
+        Assertions.assertFalse(urinals.goodString(""));
+    }
+
+    @Test
+    void goodStringThree() {
+        System.out.println(" ==== TEST 3 EXECUTED - NumberFormatException ==== ");
+        Assertions.assertThrows(NumberFormatException.class, () -> {
+            urinals.goodString("abc");
+        });
+    }
+
+    @Test
     void testCountUrinals1() {
         System.out.println(" ==== TEST 1 EXECUTED ==== ");
         Assertions.assertEquals(-1, urinals.countUrinals("10011"));
@@ -50,16 +70,6 @@ public class UrinalsTest {
     void testCountUrinals6() {
         System.out.println(" ==== TEST 6 EXECUTED ==== ");
         Assertions.assertEquals(1, urinals.countUrinals("01000"));
-    }
-
-    @Test
-    void testIsValidString1(){
-        Assertions.assertTrue(urinals.isValidString("1000101"));
-    }
-
-    @Test
-    void testIsValidString2() {
-        Assertions.assertFalse(urinals.isValidString("ABC"));
     }
 
 }
