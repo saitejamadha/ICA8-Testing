@@ -8,10 +8,14 @@ import java.util.regex.Pattern;
 public class Urinals {
 
     boolean isValidString(String input) {
-        return true;
+        Pattern pattern = Pattern.compile("^[0-1]*$");
+        Matcher matcher = pattern.matcher(input);
+        return matcher.find();
     }
 
-    void readFromFile(String filePath) {}
+    String readFromFile(String filePath) {
+        return null;
+    }
 
     void writeToFile(String content) {}
 
