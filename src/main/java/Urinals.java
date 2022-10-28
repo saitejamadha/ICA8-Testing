@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -104,8 +105,38 @@ public class Urinals {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Urinals uri = new Urinals();
+        while (true) {
+            System.out.println("\n=== Available Options ===");
+            System.out.println("1. Read from console");
+            System.out.println("2. Read from file");
+            System.out.println("3. Exit");
+            System.out.print("Enter on option: ");
+            Scanner sc = new Scanner(System.in);
+            String next = sc.nextLine();
 
+            if (next.equals("1")) {
+                System.out.print("Enter the urinals string: ");
+                String uriString = sc.nextLine();
+
+                if (!uri.goodString(uriString)) {
+                    System.out.println("Invalid input");
+                    continue;
+                }
+
+                int count = uri.countUrinals(uriString);
+                System.out.print("Available urinals count: " + count + "\n");
+            } else if (next.equals("2")) {
+                String[] lines = uri.readFromFile("urinal.dat");
+                String outFile = uri.writeToFile(lines);
+                System.out.println("Output is written to " + outFile);
+
+            } else if (next.equals("3")) {
+                System.out.println("Exiting...");
+                System.exit(1);
+            }
+        }
     }
 
 }
