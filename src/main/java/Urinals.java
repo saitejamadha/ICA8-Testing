@@ -16,7 +16,7 @@ public class Urinals {
         Matcher matcher = pattern.matcher(urinals);
         if (matcher.find()) return -1;
 
-        int previousCount = (int) urinals.chars().filter(ch -> ch == '1').count();
+        int prevCounts = (int) urinals.chars().filter(ch -> ch == '1').count();
 
         int[] urinalsArray = new int[urinals.length()];
         for (int i = 0; i < urinals.length(); i++) {
@@ -42,7 +42,7 @@ public class Urinals {
             }
         }
 
-        return (int) Arrays.stream(urinalsArray).filter(x -> x == 1).count() - previousCount;
+        return (int) Arrays.stream(urinalsArray).filter(x -> x == 1).count() - prevCounts;
 
     }
 
