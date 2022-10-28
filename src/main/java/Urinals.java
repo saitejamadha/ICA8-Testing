@@ -14,9 +14,7 @@ public class Urinals {
     int countUrinals(String urinals) {
         Pattern pattern = Pattern.compile("11");
         Matcher matcher = pattern.matcher(urinals);
-        if (matcher.find()) {
-            return -1;
-        }
+        if (matcher.find()) return -1;
 
         int previousCount = (int) urinals.chars().filter(ch -> ch == '1').count();
 
