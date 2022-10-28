@@ -5,7 +5,7 @@ public class UrinalsTest {
 
     @Test
     void testJunit() {
-        Assertions.assertEquals("", "Sai Teja Madha");
+        Assertions.assertEquals("Sai Teja Madha", "Sai Teja Madha");
     }
 
 
